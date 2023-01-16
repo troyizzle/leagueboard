@@ -15,14 +15,14 @@ function SummonerRow({ summoner }: SummonerRowProps) {
       className="flex flex-row items-center bg-slate-900 relative"
       style={{ width: "90% " }}
     >
-      <Image src={`http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${summoner.profileIconId}.png`} alt="profile icon" className="w-16 h-16" />
+      <Image width={64} height={64} src={`http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${summoner.profileIconId}.png`} alt="profile icon" />
       <span className="text-sm md:text-lg font-bold ml-2">{summoner.name}</span>
       <a className="ml-2 text-xs hover:underline"  rel="noreferrer" target="_blank" href={`https://www.op.gg/summoners/na/${summoner.name}`}>op.gg</a>
       <div className="ml-auto flex flex-row items-center">
         {summoner.tier &&
           <div className="relative">
             {summoner.miniSeries && <MiniSeries {...summoner.miniSeries} />}
-            <Image title={`${summoner.leaguePoints} LP`} src={`https://static.bigbrain.gg/assets/lol/s12_rank_icons/${summoner.tier.toLowerCase()}.png`} alt="rank" className="w-16 h-16" />
+            <Image width={64} height={64} title={`${summoner.leaguePoints} LP`} src={`https://static.bigbrain.gg/assets/lol/s12_rank_icons/${summoner.tier.toLowerCase()}.png`} alt="rank"  />
           </div>
         }
         {summoner.leaguePoints && <span style={{ minWidth: "3vmin" }} className="text-sm text-slate-400 text-right">{summoner.leaguePoints}</span>}

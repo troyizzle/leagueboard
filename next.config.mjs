@@ -9,6 +9,9 @@
 const config = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ['ddragon.leagueoflegends.com', 'static.bigbrain.gg']
+  },
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
