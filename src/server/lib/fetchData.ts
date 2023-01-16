@@ -11,7 +11,7 @@ export async function fetchSummonerData(summonerName: string) {
 }
 
 export async function fetchSummonerEntries(summonerId: string) {
-  const rAPI = new RiotAPI(env.RIOT_API_KEY);
+  const rAPI = new RiotAPI(env.RIOT_API_KEY); // TODO
 
   return await rAPI.league.getEntriesBySummonerId({
     region: PlatformId.NA1,
