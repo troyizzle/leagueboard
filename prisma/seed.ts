@@ -7,20 +7,23 @@ async function main() {
 
   const summonerNames = ['Austin', 'wrist x6', 'maLkaviAn', 'Обеспечить Гаджи', 'come outside', 'oxycontent']
   summonerNames.forEach(async (name) => {
-    const summonerData = await fetchSummonerData(name)
-    const entriesData = await fetchSummonerEntries(summonerData.id)
-    const { id: summonerId, ...rest } = summonerData
-    await prisma.summoner.create({
-      data: {
-        summonerId,
-        ...rest,
-        entries: {
-          // @ts-ignore
-          create: entriesData.map(({ summonerId, ...attrs }) => attrs)
+    try {
+      const summonerData = await fetchSummonerData(name)
+      const entriesData = await fetchSummonerEntries(summonerData.id)
+      const { id: summonerId, ...rest } = summonerData
+      await prisma.summoner.create({
+        data: {
+          summonerId,
+          ...rest,
+          entries: {
+            // @ts-ignore
+            create: entriesData.map(({ summonerId, ...attrs }) => attrs)
+          }
         }
-      }
-    })
-
+      })
+    } catch (e) {
+      console.log(e)
+    }
   })
 }
 
