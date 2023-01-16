@@ -15,6 +15,7 @@ async function main() {
         summonerId,
         ...rest,
         entries: {
+          // @ts-ignore
           create: entriesData.map(({ summonerId, ...attrs }) => attrs)
         }
       }
