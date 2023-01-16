@@ -54,6 +54,7 @@ WHEN "se"."tier" = 'GRANDMASTER' THEN 2
     summoners.forEach(async (summoner) => {
       if (!summoner.summonerId) return; // TODO: Just query for those that have summonerId?
       const entries = await fetchSummonerEntries(summoner.summonerId)
+      // @ts-ignore
       const data = entries.map(({ summonerId, ...attrs }) => ({...attrs, summonerId: summoner.id}))
       // @ts-ignore
       await ctx.prisma.summonerEntries.createMany({ data: data })

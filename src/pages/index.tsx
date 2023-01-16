@@ -1,7 +1,8 @@
 import clsx from "clsx";
 import { type NextPage } from "next";
 import Head from "next/head";
-import { MiniSeries, summonerWithData } from "../server/api/routers/summoner";
+import Image from "next/image";
+import { MiniSeries, type summonerWithData } from "../server/api/routers/summoner";
 import { api } from "../utils/api";
 
 type SummonerRowProps = {
@@ -14,14 +15,14 @@ function SummonerRow({ summoner }: SummonerRowProps) {
       className="flex flex-row items-center bg-slate-900 relative"
       style={{ width: "90% " }}
     >
-      <img src={`http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${summoner.profileIconId}.png`} alt="profile icon" className="w-16 h-16" />
+      <Image src={`http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${summoner.profileIconId}.png`} alt="profile icon" className="w-16 h-16" />
       <span className="text-sm md:text-lg font-bold ml-2">{summoner.name}</span>
-      <a className="ml-2 text-xs hover:underline" target="_blank" href={`https://www.op.gg/summoners/na/${summoner.name}`}>op.gg</a>
+      <a className="ml-2 text-xs hover:underline"  rel="noreferrer" target="_blank" href={`https://www.op.gg/summoners/na/${summoner.name}`}>op.gg</a>
       <div className="ml-auto flex flex-row items-center">
         {summoner.tier &&
           <div className="relative">
             {summoner.miniSeries && <MiniSeries {...summoner.miniSeries} />}
-            <img title={`${summoner.leaguePoints} LP`} src={`https://static.bigbrain.gg/assets/lol/s12_rank_icons/${summoner.tier.toLowerCase()}.png`} alt="rank" className="w-16 h-16" />
+            <Image title={`${summoner.leaguePoints} LP`} src={`https://static.bigbrain.gg/assets/lol/s12_rank_icons/${summoner.tier.toLowerCase()}.png`} alt="rank" className="w-16 h-16" />
           </div>
         }
         {summoner.leaguePoints && <span style={{ minWidth: "3vmin" }} className="text-sm text-slate-400 text-right">{summoner.leaguePoints}</span>}
